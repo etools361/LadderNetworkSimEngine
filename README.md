@@ -3,11 +3,11 @@
 
 ### 如何使用(how to use)
 下载这3个文件：
-![电路分析2](文件下载.png)
+![电路分析2](downfile.png)
 顶层文件(Top file)：
 eToolsMatlabSimEng.m
-#### 修改网表(modify the newlist)
-![网表修改](网表.png)
+#### 修改网表(modify the netlist)
+![网表修改](netlist.png)
 上面一行是器件类型序号，下面是对应的器件值，器件使用标准单位。
 
 ### 运行环境(Env)
