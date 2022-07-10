@@ -19,7 +19,7 @@ win10, Matlab2021a
 这是3阶低通巴特沃斯滤波器运行效果(源端匹配)：
 ![电路分析2](Matlab_Sim2.png)
 这是7阶高通滤波器运行效果：
-![电路分析3](Matlab_Sim3.png)
+![电路分析3](Matlab_Sim4.png)
 
 ### 参考(ref)
 [1] : [模拟无源滤波器设计（一）](https://mp.weixin.qq.com/s/wNRHyBHpimjU90bymHp7JA) \
