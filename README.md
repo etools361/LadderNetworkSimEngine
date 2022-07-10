@@ -2,9 +2,9 @@
 > 这是一个Matlab版本的梯形网络仿真引擎，目的是为了梯形网络仿真验证，并且为以后梯形网络优化打基础，更多可以关注微信公众号"[电路设计小工具](https://mp.weixin.qq.com/s/fxfEnir-hU0YvF9_CWyI6g)".
 
 ### 如何使用(how to use)
-下载这3个文件：
-![downloadfile](downfile.PNG)
-顶层文件(Top file)：
+下载这3个文件： \
+![downloadfile](downfile.PNG) \
+顶层文件(Top file)： \
 eToolsMatlabSimEng.m
 #### 修改网表(modify the netlist)
 ![netlist](netlist.PNG)
