@@ -3,11 +3,11 @@
 
 ### 如何使用(how to use)
 下载这3个文件：
-![downloadfile](downfile.png)
+![downloadfile](downfile.PNG)
 顶层文件(Top file)：
 eToolsMatlabSimEng.m
 #### 修改网表(modify the netlist)
-![netlist](netlist.png)
+![netlist](netlist.PNG)
 上面一行是器件类型序号，下面是对应的器件值，器件使用标准单位。
 
 ### 运行环境(Env)
