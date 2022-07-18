@@ -20,6 +20,8 @@ win10, Matlab2021a
 ![电路分析2](Matlab_Sim2.png)
 这是7阶高通切比雪夫滤波器运行效果：
 ![电路分析3](Matlab_Sim4.png)
+这是3阶巴特沃斯低通滤波器运行效果，一端接载，电流源驱动：
+![电路分析4](Matlab_Sim5.png)
 
 ### 参考(ref)
 [1] : [模拟无源滤波器设计（一）](https://mp.weixin.qq.com/s/wNRHyBHpimjU90bymHp7JA) \
