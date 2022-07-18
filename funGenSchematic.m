@@ -33,6 +33,10 @@ if DispEn
                 text(x1-0.15, y1+0.12, 'V_i', 'FontSize',12, 'FontWeight', 'bold');
                 y0 = y1;
             case 1 % I
+                [x1, y1] = funGenI(x2, y2, r);
+                funGenText(x1, y1, r, Value(ii), 'A');
+                text(x1-0.15, y1+0.12, 'I_i', 'FontSize',12, 'FontWeight', 'bold');
+                y0 = y1;
             case 2 % R
                 if Value(ii) == 0
                     if ii ~= 3
@@ -217,6 +221,33 @@ else
     plot([y, y], [x+ll-rb-d1+d2, x+ll-rb-d1], '-k', 'LineWidth', 4);
     plot([y-d2/2, y+d2/2], [x+ll-rb-d1+d2/2, x+ll-rb-d1+d2/2], '-k', 'LineWidth', 4);
     plot([y-d2/2, y+d2/2], [x+rb+d1-d2/2, x+rb+d1-d2/2], '-k', 'LineWidth', 4);
+    x0 = x;
+    y0 = y+ll;
+end
+hold off;
+
+function [x0, y0]=funGenI(x, y, r)
+rb = 0.18;
+ll = 1.0;
+d0 = ll-rb*2;
+d1 = 0.2;
+d2 = 0.15;
+lx = linspace(0, 2*pi, 41);
+hold on;
+if r == 0
+    plot([x, x+rb], [y, y], '-k', 'LineWidth', 2);
+    plot([x+ll-rb, x+ll], [y, y], '-k', 'LineWidth', 2);
+    plot(d0/2.*cos(lx)+x+ll/2, d0/2.*sin(lx)+y, '-k', 'LineWidth', 4);
+    plot([x+ll-rb-d1+d2, x+rb+d1-d2], [y, y], '-k', 'LineWidth', 4);
+    plot([x+ll-rb-d1, x+ll-rb-d1+d2, x+ll-rb-d1], [y-d2/2, y, y+d2/2], '-k', 'LineWidth', 4);
+    x0 = x+ll;
+    y0 = y;
+else
+    plot([y, y], [x, x+rb], '-k', 'LineWidth', 2);
+    plot([y, y], [x+ll-rb, x+ll], '-k', 'LineWidth', 2);
+    plot(d0/2.*sin(lx)+y, d0/2.*cos(lx)+x+ll/2, '-k', 'LineWidth', 4);
+    plot([y, y], [x+ll-rb-d1+d2, x+rb+d1-d2], '-k', 'LineWidth', 4);
+    plot([y-d2/2, y, y+d2/2], [x+ll-rb-d1, x+ll-rb-d1+d2, x+ll-rb-d1], '-k', 'LineWidth', 4);
     x0 = x;
     y0 = y+ll;
 end
