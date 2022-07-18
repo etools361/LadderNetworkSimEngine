@@ -32,6 +32,8 @@ Value = [1, 0, 0, 1.5, 4/3, 0.5, 0, 1];
 % Value = [1,1,0,52.433e-3,106.733e-3,52.433e-3,0,1];
 % iType = [0,2,2,3,4,3,4,3,4,3,2,2];
 % Value = [1,1,0,48.973e-3,95.459e-3,34.297e-3,90.415e-3,34.297e-3,95.459e-3,48.973e-3,0,1];
+% iType = [0,2,2,3,4,3,4,3,4,2];
+% Value = [1,1,0,48.973e-3,95.459e-3,34.297e-3,90.415e-3,34.297e-3,95.459e-3,1];
 subplot(2, 1, 1);
 [img] = funGenSchematic(iType, Value, 1);
 ylim([-0.5, 1.5]);
@@ -123,7 +125,7 @@ else
 end
 title('FrequencyResponse');
 xlim([min(freq),max(freq)]);
-ylim([-20,0]);
+ylim([-80,0]);
 subplot(2,2,4)
 semilogx(freq, uWVo, '-r', 'LineWidth', 2);
 xlim([min(freq),max(freq)]);
