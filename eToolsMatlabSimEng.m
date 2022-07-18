@@ -7,12 +7,20 @@ tic;
 % 0:V,1:I,2:R,3:L,4:C
 % 3rd order butterworth low pass filter
 %        V,R,R,C,L,C,R,R
-iType = [0,2,2,4,3,4,2,2];
-Value = [1,1,0,1,2,1,0,1];
+% iType = [0,2,2,4,3,4,2,2];
+% Value = [1,1,0,1,2,1,0,1];
 % 0:V,1:I,2:R,3:L,4:C
 %        V, R,  L,  C,  L, R
 % iType = [0, 2,  3,  4,  3, 2];
 % Value = [1, 1,1/2,4/3,3/2, 0];
+% 0:V,1:I,2:R,3:L,4:C
+%          V, R, R,   C,   L,   C
+% iType = [0, 2, 2,   4,   3,   4];
+% Value = [1, 1, 0, 0.5, 4/3, 1.5];
+% 0:V,1:I,2:R,3:L,4:C
+%        I, R, R,   C,   L,   C, R, R
+iType = [1, 2, 2,   4,   3,   4, 2, 2];
+Value = [1, 0, 0, 1.5, 4/3, 0.5, 0, 1];
 % iType = [0,2,2,4,3,4,3,4,2,2];
 % Value = [1,1,0,1*340e-3,174e-3,448e-3,174e-3,340e-3,0,1];
 % iType = [0,2,2,4,3,4,3,4,2,2];
@@ -26,7 +34,7 @@ Value = [1,1,0,1,2,1,0,1];
 % Value = [1,1,0,48.973e-3,95.459e-3,34.297e-3,90.415e-3,34.297e-3,95.459e-3,48.973e-3,0,1];
 subplot(2, 1, 1);
 [img] = funGenSchematic(iType, Value, 1);
-ylim([-1.0, 2.0]);
+ylim([-0.5, 1.5]);
 set(gca,'ytick',[]);
 set(gca,'xtick',[]);
 set(gca,'Box','off');
@@ -56,7 +64,7 @@ for ii=1:N
             case 0
                 Zw(jj) = 0;
             case 1
-                Zw(jj) = 1e15;
+                Zw(jj) = 0;
             case 2
                 Zw(jj) = Value(jj+1);
             case 3
@@ -74,13 +82,23 @@ for ii=1:N
     for jj=1:nZ
         kk1 = jj-1;
         kk3 = jj+1;
-        if kk1 >= 1
-            Z(jj, kk1) = -Zw(jj*2-1);
+        if iType(jj) == 1
+            if kk1 >= 1
+                Z(jj, kk1) = 0;
+            end
+            if kk3 <= nZ
+                Z(jj, kk3) = 0;
+            end
+            Z(jj, jj) = 1;
+        else
+            if kk1 >= 1
+                Z(jj, kk1) = -Zw(jj*2-1);
+            end
+            if kk3 <= nZ
+                Z(jj, kk3) = -Zw(jj*2+1);
+            end
+            Z(jj, jj) = Zw(jj*2+1)+Zw(jj*2+0)+Zw(jj*2-1);
         end
-        if kk3 <= nZ
-            Z(jj, kk3) = -Zw(jj*2+1);
-        end
-        Z(jj, jj) = Zw(jj*2+1)+Zw(jj*2+0)+Zw(jj*2-1);
     end
     I = Z\V;
     if Value(end) == 0
